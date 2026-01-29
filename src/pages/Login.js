@@ -16,7 +16,7 @@ export default function Login() {
     setError("");
 
     try {
-      const res = await axios.post("https://backend-segrais.onrender.com/api/auth/login", {
+      const res = await axios.post("https://frontend-segrais.vercel.app/api/auth/login", {
         login,
         password
       });
