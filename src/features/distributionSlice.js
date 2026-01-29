@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL + "/api/distribution";
+const API_URL = "https://backend-segrais.onrender.com/api/distribution";
 
 // fetch all
 export const fetchDistributions = createAsyncThunk("distribution/fetch", async () => {
