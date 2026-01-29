@@ -5,7 +5,7 @@ import { loginSuccess } from "../features/authSlice";
 
 export default function Login() {
   const dispatch = useDispatch();
-  const API_URL = process.env.REACT_APP_API_URL + "api/auth/login";
+  const API_URL = process.env.REACT_APP_API_URL + "/login";
 
 
   const [login, setLogin] = useState("");
