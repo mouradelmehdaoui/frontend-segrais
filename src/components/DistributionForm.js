@@ -22,8 +22,6 @@ export default function DistributionForm({ show, onClose, editData }) {
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
-  console.log(form)
-
   const handleSubmit = e => {
     e.preventDefault();
     if (editData) {
