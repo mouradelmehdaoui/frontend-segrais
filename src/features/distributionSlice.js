@@ -1,17 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "https://backend-segrais.onrender.com/api/distribution";
 
 // fetch all
 export const fetchDistributions = createAsyncThunk("distribution/fetch", async () => {
-  const res = await axios.get(API_URL);
+  const res = await axios.get("https://backend-segrais.onrender.com/api/distribution");
   return res.data;
 });
 
 // delete
 export const deleteDistribution = createAsyncThunk("distribution/delete", async id => {
-  await axios.delete(`${API_URL}/${id}`);
+  await axios.delete(`${"https://backend-segrais.onrender.com/api/distribution"}/${id}`);
   return id;
 });
 
@@ -19,10 +18,7 @@ export const deleteDistribution = createAsyncThunk("distribution/delete", async 
 export const createDistribution = createAsyncThunk(
   "distribution/create",
   async (data) => {
-
-    console.log(data);
-    
-    const res = await axios.post(API_URL, data);
+    const res = await axios.post("https://backend-segrais.onrender.com/api/distribution", data);
     return res.data;
   }
 );
@@ -31,7 +27,7 @@ export const createDistribution = createAsyncThunk(
 export const updateDistribution = createAsyncThunk(
   "distribution/update",
   async ({ id, data }) => {
-    const res = await axios.put(`${API_URL}/${id}`, data);
+    const res = await axios.put(`${"https://backend-segrais.onrender.com/api/distribution"}/${id}`, data);
     return res.data;
   }
 );
