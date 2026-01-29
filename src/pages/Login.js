@@ -5,7 +5,6 @@ import { loginSuccess } from "../features/authSlice";
 
 export default function Login() {
   const dispatch = useDispatch();
-  const API_URL = process.env.REACT_APP_API_URL + "/login";
 
 
   const [login, setLogin] = useState("");
@@ -17,7 +16,7 @@ export default function Login() {
     setError("");
 
     try {
-      const res = await axios.post(API_URL, {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
         login,
         password
       });
