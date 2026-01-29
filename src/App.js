@@ -1,11 +1,25 @@
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import "./styles/main.scss";
 
 function App() {
   const token = useSelector(state => state.auth.token);
-  return token ? <Dashboard /> : <Login />;
+
+  return (
+    <Router basename="/">
+      <Routes>
+        <Route
+          path="/"
+          element={token ? <Navigate to="/dashboard" /> : <Login />}
+        />
+        <Route
+          path="/dashboard"
+          element={token ? <Dashboard /> : <Navigate to="/" />}
+        />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
