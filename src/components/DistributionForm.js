@@ -24,14 +24,38 @@ export default function DistributionForm({ show, onClose, editData }) {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    const payload = {
+      binome: form.binome,
+      adresseDistribuees: form.adresseDistribuees,
+      statut: form.statut,
+      adresseNonDistribuee: form.adresseNonDistribuee,
+      datePlanification: form.datePlanification,
+      etatAvance: form.etatAvance,
+      secteur: form.secteur
+    };
+
     if (editData) {
-      dispatch(updateDistribution({ id: editData._id, data: form }));
+      // ✏️ UPDATE (id séparé)
+      dispatch(updateDistribution({ id: editData._id, data: payload }));
     } else {
-      dispatch(createDistribution(form));
+      // ➕ CREATE (sans _id)
+      dispatch(createDistribution(payload));
     }
+
+    // reset propre
+    setForm({
+      binome: "",
+      adresseDistribuees: "",
+      statut: "en cours",
+      adresseNonDistribuee: "",
+      datePlanification: "",
+      etatAvance: "",
+      secteur: "77185"
+    });
+
     onClose();
   };
-
   if (!show) return null;
 
   return (
